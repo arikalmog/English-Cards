@@ -191,12 +191,14 @@ var gameComponent = function () {
 		};
 
 		recognition.onstart = function () {
-			_recstat.innerHTML = 'מקליט';
+			if (_recstat)
+				_recstat.innerHTML = 'מקליט';
 			console.log("start recording");
 		}
 
 		recognition.onspeechend = function () {
-			_recstat.innerHTML = 'הסתיים';
+			if (_recstat)
+				_recstat.innerHTML = 'הסתיים';
 			console.log("end");
 			_this.startSpeech();
 		}
@@ -626,6 +628,29 @@ var gameComponent = function () {
 	}
 
 
+
+}
+
+var speech = {
+
+	read: function (text) {
+
+		const utterance = new SpeechSynthesisUtterance();
+		var voices = speechSynthesis.getVoices();
+		if (voices.length > 0)
+		utterance.voice = voices[5];
+		
+		debugger;
+		// Set the text to be spoken
+		utterance.text = text;
+
+		// Set the language to English
+		utterance.lang = "en-US";
+
+		// Call the speech synthesis API to speak the text
+		window.speechSynthesis.speak(utterance);
+
+	}
 
 }
 

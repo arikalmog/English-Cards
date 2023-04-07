@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0");
+
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0px;
@@ -77,9 +79,14 @@ body {
 .flip-card.current {
   position: absolute;
   top: 300px;
-  left: calc(50% - 250px);
+  
 }
 
+@media (min-width: 600px) {
+  .flip-card-current {
+    left: calc(50% - 250px);
+  }
+}
 .flip-card:hover {
   -webkit-box-shadow: 6px 8px 24px -15px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 6px 8px 24px -15px rgba(0, 0, 0, 0.75);
