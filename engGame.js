@@ -139,7 +139,7 @@ var gameComponent = function () {
 		this.speechElement = document.getElementById("speech");
 		//this.word.innerText = words[0];
 		this.speech();
-		recognition.lang = "en-US";
+		recognition.lang = "he-IL";
 		recognition.start();
 	}
 	this.lastAns;
@@ -223,68 +223,288 @@ var gameComponent = function () {
 
 
 	this.scoreLetters = {};
-	this.words = [
-		{ he: 'חבר', en: 'friend', category: '' },
-		{ he: 'כיתה', en: 'grade', category: '' },
-		{ he: 'בית', en: 'house', category: '' },
-		{ he: 'חדש', en: 'new', category: '' },
-		{ he: 'בית ספר ', en: 'school', category: '' },
-		{ he: 'מורה', en: 'teacher', category: '' },
-		{ he: 'עיר', en: 'town', category: '' },
-		{ he: 'היכן אתה גר?', en: 'where do you live?', category: '' },
-		{ he: 'אני גר ב...', en: 'I live in', category: '' },
-		{ he: 'ציפור', en: 'bird', category: '' },
-		{ he: 'אח', en: 'brother', category: '' },
-		{ he: 'אנגלית', en: 'english', category: '' },
-		{ he: 'משפחה', en: 'family', category: '' },
-		{ he: 'לעוף', en: 'fly', category: '' },
-		{ he: 'שיעור', en: 'lesson', category: '' },
-		{ he: 'נחמד, יפה', en: 'nice', category: '' },
-		{ he: 'אחות', en: 'sister', category: '' },
-		{ he: 'לדבר, לשוחח', en: 'talk', category: '' },
-		{ he: 'לרצות', en: 'want', category: '' },
-		{ he: 'בן כמה אתה?', en: 'how old are you?', category: '' },
-		{ he: 'אני בן..', en: 'I am …  years old.', category: '' },
-		{ he: 'אני לומד בבית ספר', en: 'I go to school', category: '' },
-		{ he: 'לוח', en: 'board', category: '' },
-		{ he: 'ספר', en: 'book', category: '' },
-		{ he: 'כיסא', en: 'chair', category: '' },
-		{ he: 'מחק', en: 'ereaser', category: '' },
-		{ he: 'שיעורי בית', en: 'homework', category: '' },
-		{ he: 'ארוחת צהריים', en: 'lunch', category: '' },
-		{ he: 'צריך', en: 'need', category: '' },
-		{ he: 'מחברת', en: 'notebook', category: '' },
-		{ he: 'נייר', en: 'paper', category: '' },
-		{ he: 'עיפרון', en: 'pencil', category: '' },
-		{ he: 'תודה', en: 'thanks', category: '' },
-		{ he: 'האם יש לך?', en: 'do you have', category: '' },
-		{ he: 'אין לי...', en: 'I don’t have', category: '' },
-		{ he: 'בואי נלך....', en: "Let's go", category: '' },
-		{ he: 'כתובת', en: 'address', category: '' },
-		{ he: 'אוכל', en: 'food', category: '' },
-		{ he: 'לי, אותי', en: 'me', category: '' },
-		{ he: 'לפגוש', en: 'meet', category: '' },
-		{ he: 'מספר טלפון', en: 'phone number', category: '' },
-		{ he: 'בבקשה', en: 'please', category: '' },
-		{ he: 'תלמיד', en: 'pupil', category: '' },
-		{ he: 'לראות', en: 'see', category: '' },
-		{ he: 'רחוב', en: 'street', category: '' },
-		{ he: 'לכתוב', en: 'write', category: '' },
-		{ he: 'מה ה...  שלך?', en: '', category: '' },
-		{ he: 'זה רחוב...', en: '', category: '' },
-		{ he: 'אומנות', en: 'art', category: '' },
-		{ he: 'כיתה', en: 'grade', category: '' },
-		{ he: 'מחשב', en: 'computer', category: '' },
-		{ he: 'יום', en: 'day', category: '' },
-		{ he: 'שמח', en: 'happy', category: '' },
-		{ he: 'ללמוד', en: 'learn', category: '' },
-		{ he: 'מתמטיקה', en: 'math', category: '' },
-		{ he: 'מוזיקה', en: 'music', category: '' },
-		{ he: 'ספורט', en: 'sport', category: '' },
-		{ he: 'שבוע', en: 'week', category: '' },
+	this.words_dic = [
+		{ he: 'סתיו', en: 'autumn' },
+		{ he: 'כדורסל', en: 'basketball' },
+		{ he: 'יפה', en: 'beautiful' },
+		{ he: 'מגפיים', en: 'boots' },
+		{ he: 'ילדים', en: 'children' },
+		{ he: 'קרוב', en: 'near' },
+		{ he: 'אף', en: 'nose' },
+		{ he: 'בסדר', en: 'okay' },
+		{ he: 'ישן', en: 'old' },
+		{ he: 'מכנסיים', en: 'pants' },
+		{ he: 'טפס', en: 'climb' },
+		{ he: 'פארק', en: 'park' },
+		{ he: 'ענן', en: 'cloud' },
+		{ he: 'מעיל', en: 'coat' },
+		{ he: 'קר', en: 'cold' },
+		{ he: 'לבוא', en: 'come' },
+		{ he: 'שמלה', en: 'dress' },
+		{ he: 'לאכול', en: 'eat' },
+		{ he: 'תמונה', en: 'picture' },
+		{ he: 'לשחק', en: 'play' },
+		{ he: 'לשחק בכדורגל', en: 'play football' },
+		{ he: 'בריכה', en: 'pool' },
+		{ he: 'לקרוא ספר', en: 'read a book' },
+		{ he: 'חולצה', en: 'shirt' },
+		{ he: 'עיניים', en: 'eyes' },
+		{ he: 'נעליים', en: 'shoes' },
+		{ he: 'אבא', en: 'father' },
+		{ he: 'שמיים', en: 'sky' },
+		{ he: 'לעוף עפיפון', en: 'fly a kite' },
+		{ he: 'מצחיק', en: 'funny' },
+		{ he: 'משחק', en: 'game' },
+		{ he: 'לישון', en: 'sleep' },
+		{ he: 'שלג', en: 'snow' },
+		{ he: 'גרביים', en: 'socks' },
+		{ he: 'טוב עבורך', en: 'good for you' },
+		{ he: 'אביב', en: 'spring' },
+		{ he: 'בית', en: 'home' },
+		{ he: 'לעמוד', en: 'stand' },
+		{ he: 'גלידה', en: 'ice cream' },
+		{ he: 'חנות', en: 'store' },
+		{ he: 'אמא', en: 'mother' },
+		{ he: 'קיץ', en: 'summer' },
+		{ he: 'שמשי', en: 'sunny' },
+		{ he: 'פה', en: 'mouth' },
+		{ he: 'הם', en: 'they' },
+		{ he: 'גם כן', en: 'too' },
+		{ he: 'עץ', en: 'tree' },
+		{ he: 'קיר', en: 'wall' },
+		{ he: 'חם', en: 'warm' },
+		{ he: 'אנחנו', en: 'we' },
+		{ he: 'ללבוש', en: 'wear' },
+		{ he: 'מי', en: 'who' },
+		{ he: 'חורף', en: 'winter' },
+		{ he: 'פאזל', en: 'puzzle' },
+		{ he: 'משפחה', en: 'family' },
+		{ he: 'חוף', en: 'shore' }
 
 	]
 
+	this.words = [
+		{
+			en: "Autumn is my favorite season.",
+			he: "סתיו היא העונה המועדפת עליי."
+		},
+		{
+			en: "I love to play basketball with my friends.",
+			he: "אני אוהב לשחק כדורסל עם החברים שלי."
+		},
+		{
+			en: "The flowers in the garden are so beautiful.",
+			he: "הפרחים בגינה כל כך יפים."
+		},
+		{
+			en: "I need to buy new boots for the winter.",
+			he: "אני צריך לקנות מגפיים חדשים לחורף."
+		},
+		{
+			en: "The children are playing in the park.",
+			he: "הילדים משחקים בפארק."
+		},
+		{
+			en: "There is a store near my house.",
+			he: "יש חנות ליד הבית שלי."
+		},
+		{
+			en: "It is cold and my nose is runny.",
+			he: "קר והאף שלי מצחיק."
+		},
+		{
+			en: "Are you okay? You look funny.",
+			he: "האם אתה בסדר? אתה נראה מצחיק."
+		},
+		{
+			en: "My father is very old, but beautiful.",
+			he: "אבא שלי זקן מאוד, אבל יפה."
+		},
+		{
+			en: "I need to buy new pants for work.",
+			he: "אני צריך לקנות מכנסיים חדשים לעבודה."
+		},
+		{
+			en: "I want to climb to the top of the mountain.",
+			he: "אני רוצה לטפס עד ראש ההר."
+		},
+		{
+			en: "Let's go to the park and have a picnic on the grass.",
+			he: "בוא נלך לפארק ונעשה פיקניק על הדשא."
+		},
+		{
+			en: "The cloud in the sky looks like a rabbit.",
+			he: "הענן בשמיים נראה כמו ארנב."
+		},
+		{
+			en: "I need to wear my coat because it's cold outside.",
+			he: "אני צריך ללבוש את המעיל שלי, כיוון שזה קר בחוץ."
+		},
+		{
+			en: "I don't like to be outside when it's cold.",
+			he: "אני לא אוהב להיות בחוץ כשזה קר."
+		},
+		{
+			en: "Come with me to the party tonight.",
+			he: "בוא איתי למסיבה הלילה."
+		},
+		{
+			en: "I need to buy a new dress for the wedding.",
+			he: "אני צריך לקנות שמלה חדשה לחתונה."
+		},
+		{
+			en: "I'm hungry. Let's eat something.",
+			he: "אני רעב. בוא נאכל משהו."
+		},
+		{
+			en: "I like to take pictures of landscapes.",
+			he: "אני אוהב לצלם נופים."
+		},
+		{
+			en: "I like to play games with my friends.",
+			he: "אני אוהב לשחק משחקים עם החברים שלי."
+		},
+		{
+			en: "I want to play football with my brother.",
+			he: "אני רוצה לשחק כדורגל עם אחי."
+		},
+		{
+			en: "Let's go swimming in the pool.",
+			he: "בוא נשחה בבריכה."
+		},
+		{
+			en: "I like to read a book before going to bed.",
+			he: "אני אוהב לקרוא ספר לפני שאני הולך לישון."
+		},
+		{
+			en: "I need to buy a new shirt for work.",
+			he: "אני צריך לקנות חולצה חדשה לעבודה."
+		},
+		{
+			en: "Her eyes are so blue and beautiful.",
+			he: "העיניים שלה כחולות ויפות."
+		},
+		{
+			en: "I like to wear comfortable shoes.",
+			he: "אני אוהב ללבוש נעליים נוחות."
+		},
+		{
+			en: "My father likes to watch sports on TV.",
+			he: "האבא שלי אוהב לצפות בספורט בטלוויזיה."
+		},
+		{
+			en: "The sky is so blue and clear today.",
+			he: "השמיים הם כחולים וברורים היום."
+		},
+		{
+			en: "Let's go outside and fly a kite.",
+			he: "בוא נצא החוצה ונעפיל עפיפון."
+		},
+		{
+			en: "He told a funny joke and made us all laugh.",
+			he: "הוא סיפר בדיחה מצחיקה והצליח לגרום לנו לצחוק כולנו."
+		},
+		{
+			en: "I like to play video games in my free time.",
+			he: "אני אוהב לשחק במשחקי וידאו בזמני הפנוי."
+		},
+		{
+			en: "I'm tired. I want to sleep.",
+			he: "אני עייף. אני רוצה לישון."
+		},
+		{
+			en: "I love to play in the snow.",
+			he: "אני אוהב לשחק בשלג."
+		},
+		{
+			en: "I need to buy some new socks.",
+			he: "אני צריך לקנות כמה גרביים חדשים."
+		},
+		{
+			en: "That's good for you. I'm happy to hear it.",
+			he: "זה טוב עבורך. אני שמח לשמוע את זה."
+		},
+		{
+			en: "I love the spring when all the flowers start to bloom.",
+			he: "אני אוהב את האביב כשכל הפרחים מתחילים לפרוח."
+		},
+		{
+			en: "I feel at home when I'm with my family.",
+			he: "אני מרגיש בבית כשאני עם המשפחה שלי."
+		},
+		{
+			en: "I like to stand on top of the mountain and look at the view.",
+			he: "אני אוהב לעמוד על ראש ההר ולהסתכל על הנוף."
+		},
+		{
+			en: "I want to get some ice cream from the store.",
+			he: "אני רוצה לקבל קצת גלידה מהחנות."
+		},
+		{
+			en: "I like to make things with my hands.",
+			he: "אני אוהב ליצור דברים בעזרת הידיים שלי."
+		},
+		{
+			en: "My mother is the best cook.",
+			he: "האמא שלי היא השף הכי טוב."
+		},
+		{
+			en: "I love the summer when I can go to the shore.",
+			he: "אני אוהב את הקיץ כשאני יכול ללכת לים."
+		},
+		{
+			en: "It's sunny today. Let's go outside.",
+			he: "היום יש שמש. בואו נצא החוצה."
+		},
+		{
+			en: "I burned my mouth on the hot pizza.",
+			he: "שרפתי את הפה שלי על הפיצה החמה."
+		},
+		{
+			en: "They are my best friends.",
+			he: "הם החברים הכי טובים שלי."
+		},
+		{
+			en: "I want to go to the store too.",
+			he: "אני רוצה גם ללכת לחנות."
+		},
+		{
+			en: "The tree in my house is old.",
+			he: "העץ בבית שלי ישן."
+		},
+		{
+			en: "I have a picture of a beautiful autumn.",
+			he: "יש לי תמונה יפה של סתיו"
+		},
+		{
+			en: "I wear my warm coat in the summer too.",
+			he: "אני לובש את המעיל החם שלי גם בקיץ."
+		},
+		{
+			en: "We are going to the park to play.",
+			he: "אנחנו הולכים לפארק לשחק."
+		},
+		{
+			en: "I like to wear my red shoes.",
+			he: "אני אוהב ללבוש את הנעליים האדומות שלי."
+		},
+		{
+			en: "My father buy me a new boots.",
+			he: "אבא שלי קנה לי מגפיים חדשים."
+		},
+		{
+			en: "The sky is so blue in the spring.",
+			he: "השמיים כה כחולים באביב."
+		},
+		{
+			en: "I want to fly a kite in the park.",
+			he: "אני רוצה לעוף עפיפון בפארק."
+		},
+		{
+			en: "The game was very fun to play.",
+			he: "המשחק היה מאוד כיף לשחק."
+		}
+	]
 
 
 
@@ -299,7 +519,7 @@ var gameComponent = function () {
 			this.startSpeech();
 		if (this.gameCards.length == 0)
 			this.words.forEach((w, i) => {
-				this.gameCards.push(new card(i, w.en, w.he, w));
+				this.gameCards.push(new card(i, w.he, w.en, w));
 
 
 			})

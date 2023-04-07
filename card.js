@@ -51,6 +51,11 @@ var card = function (cardNumber, backText, frontText, word) {
         this.cardElement = document.createElement("div");
         this.cardElement.classList.add("flip-card");
         this.cardElement.onclick = () => { this.select() };
+        
+        var enWords = this.words_dic.map(w => w.en);
+        enWords.forEach(word => {
+           this.frontText = this.frontText.replace(" " + word + " ", " <b>" + word + "</b> ");
+        })
         this.cardElement.innerHTML =
             '<div id="c' + this.id + '" class="flip-card-inner">' +
             '<div class="flip-card-front">' +
@@ -68,5 +73,66 @@ var card = function (cardNumber, backText, frontText, word) {
         return this.cardElement;
     }
 
+    this.words_dic = [
+		{ he: 'סתיו', en: 'autumn' },
+		{ he: 'כדורסל', en: 'basketball' },
+		{ he: 'יפה', en: 'beautiful' },
+		{ he: 'מגפיים', en: 'boots' },
+		{ he: 'ילדים', en: 'children' },
+		{ he: 'קרוב', en: 'near' },
+		{ he: 'אף', en: 'nose' },
+		{ he: 'בסדר', en: 'okay' },
+		{ he: 'ישן', en: 'old' },
+		{ he: 'מכנסיים', en: 'pants' },
+		{ he: 'טפס', en: 'climb' },
+		{ he: 'פארק', en: 'park' },
+		{ he: 'ענן', en: 'cloud' },
+		{ he: 'מעיל', en: 'coat' },
+		{ he: 'קר', en: 'cold' },
+		{ he: 'לבוא', en: 'come' },
+		{ he: 'שמלה', en: 'dress' },
+		{ he: 'לאכול', en: 'eat' },
+		{ he: 'תמונה', en: 'picture' },
+		{ he: 'לשחק בכדורגל', en: 'play football' },
+        { he: 'לשחק', en: 'play' },
+		{ he: 'בריכה', en: 'pool' },
+		{ he: 'לקרוא ספר', en: 'read a book' },
+		{ he: 'חולצה', en: 'shirt' },
+		{ he: 'עיניים', en: 'eyes' },
+		{ he: 'נעליים', en: 'shoes' },
+		{ he: 'אבא', en: 'father' },
+		{ he: 'שמיים', en: 'sky' },
+		{ he: 'לעוף עפיפון', en: 'fly a kite' },
+		{ he: 'מצחיק', en: 'funny' },
+		{ he: 'משחק', en: 'game' },
+		{ he: 'לישון', en: 'sleep' },
+		{ he: 'שלג', en: 'snow' },
+		{ he: 'גרביים', en: 'socks' },
+		{ he: 'טוב עבורך', en: 'good for you' },
+		{ he: 'אביב', en: 'spring' },
+		{ he: 'בית', en: 'home' },
+		{ he: 'לעמוד', en: 'stand' },
+		{ he: 'גלידה', en: 'ice cream' },
+		{ he: 'חנות', en: 'store' },
+		{ he: 'אמא', en: 'mother' },
+		{ he: 'קיץ', en: 'summer' },
+		{ he: 'שמשי', en: 'sunny' },
+		{ he: 'פה', en: 'mouth' },
+		{ he: 'הם', en: 'they' },
+		{ he: 'גם כן', en: 'too' },
+		{ he: 'עץ', en: 'tree' },
+		{ he: 'קיר', en: 'wall' },
+		{ he: 'חם', en: 'warm' },
+		{ he: 'אנחנו', en: 'we' },
+		{ he: 'ללבוש', en: 'wear' },
+		{ he: 'מי', en: 'who' },
+		{ he: 'חורף', en: 'winter' },
+		{ he: 'פאזל', en: 'puzzle' },
+		{ he: 'משפחה', en: 'family' },
+		{ he: 'חוף', en: 'shore' }
+
+	]
     this.set();
+
+    
 }

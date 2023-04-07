@@ -46,7 +46,7 @@ body {
 .flip-card {
   cursor: pointer;
   background-color: #fff;
-  width: 225px;
+  width: 500px;
   height: 150px;
   perspective: 1000px;
   display: inline-block;
@@ -68,13 +68,13 @@ body {
 .flip-card.fail {
   position: absolute;
   top: calc(100% - 200px);
-  left: calc(100% - 230px);
+  left: calc(100% - 550px);
 }
 
 .flip-card.current {
   position: absolute;
-  top: 50px;
-  left: calc(50% - 115px);
+  top: 300px;
+  left: calc(50% - 250px);
 }
 
 .flip-card:hover {
@@ -186,8 +186,13 @@ img {
   align-items: center;
   font-size: 16px;
   margin: auto;
-  width: 400px;
+  width: 80%;
   justify-content: space-between;
+}
+
+button {
+  height: 150px;
+  width: 100px;
 }
 
 .good {
